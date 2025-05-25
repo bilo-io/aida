@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "workspaces": [
-    "src/webapp",
+    "src/app",
     "src/packages"
   ],
   "scripts": {
