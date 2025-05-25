@@ -1,17 +1,23 @@
-'use client'
+'use client';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
-import React from 'react';
 import { Theme } from '@/styles/themes';
 
-const imgPath = `${window.location.origin}/assets/img`
-export const LandingPage = () => {
+const Page = () => {
   const { theme } = useTheme();
+  const [imgPath, setImgPath] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setImgPath(`${window.location.origin}/assets/img`);
+    }
+  }, []);
 
   return (
     <div style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="w-full overflow-x-hidden">
-      <Hero theme={theme} />
-      <SocialProof theme={theme} />
-      <ProblemSolution theme={theme} />
+      <Hero theme={theme} imgPath={imgPath} />
+      <SocialProof theme={theme} imgPath={imgPath} />
+      <ProblemSolution theme={theme} imgPath={imgPath} />
       <Features theme={theme} />
       <HowItWorks theme={theme} />
       <Testimonials theme={theme} />
@@ -22,34 +28,33 @@ export const LandingPage = () => {
   );
 };
 
-const Hero = ({ theme }: { theme: Theme}) => (
+export default Page;
+
+const Hero = ({ theme, imgPath }: { theme: Theme; imgPath: string }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="text-center py-20 px-6">
     <h1 className="text-4xl md:text-5xl font-bold mb-4">Turn Ideas into Reality</h1>
     <p className="text-lg mb-6 max-w-2xl mx-auto">
       Our tool helps you go from concept to launch 5x faster.
     </p>
     <button style={{ backgroundColor: theme.PRIMARY, color: '#fff' }} className="px-6 py-3 rounded-md hover:opacity-90 transition">
-      <a href="/dashboard">
-      Dashboard
-      </a>
+      <a href="/dashboard">Dashboard</a>
     </button>
     <img src={`${imgPath}/img-placeholder-1920x1080-2.png`} alt="Mockup" className="mx-auto mt-10 max-w-xl" />
   </section>
 );
 
-const SocialProof = ({ theme }: { theme: Theme}) => (
+const SocialProof = ({ theme, imgPath }: { theme: Theme; imgPath: string }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-12 text-center">
     <p className="mb-6">Trusted by 10,000+ teams</p>
     <div className="flex flex-wrap justify-center gap-6 opacity-70">
-      <img src={`${imgPath}/img-placeholder-500x500.png`} alt="Logo 1" className="h-8" />
-      <img src={`${imgPath}/img-placeholder-500x500.png`} alt="Logo 2" className="h-8" />
-      <img src={`${imgPath}/img-placeholder-500x500.png`} alt="Logo 3" className="h-8" />
-      <img src={`${imgPath}/img-placeholder-500x500.png`} alt="Logo 4" className="h-8" />
+      {[1, 2, 3, 4].map((num) => (
+        <img key={num} src={`${imgPath}/img-placeholder-500x500.png`} alt={`Logo ${num}`} className="h-8" />
+      ))}
     </div>
   </section>
 );
 
-const ProblemSolution = ({ theme }: { theme: Theme}) => (
+const ProblemSolution = ({ theme, imgPath }: { theme: Theme; imgPath: string }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-20 px-6 text-center">
     <h2 className="text-3xl font-bold mb-4">Wasting hours managing repetitive work?</h2>
     <p className="max-w-xl mx-auto">
@@ -59,7 +64,7 @@ const ProblemSolution = ({ theme }: { theme: Theme}) => (
   </section>
 );
 
-const Features = ({ theme }: { theme: Theme}) => {
+const Features = ({ theme }: { theme: Theme }) => {
   const features = [
     { title: 'Fast Setup', desc: 'Get started in minutes.', icon: '⚡' },
     { title: 'Secure by Default', desc: 'We take security seriously.', icon: '🔒' },
@@ -71,7 +76,7 @@ const Features = ({ theme }: { theme: Theme}) => {
       <h2 className="text-3xl font-bold mb-12">Features that Deliver</h2>
       <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
         {features.map((feature, i) => (
-          <div key={i} style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
+          <div key={i} className="p-6 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
             <div className="text-4xl mb-4">{feature.icon}</div>
             <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
             <p>{feature.desc}</p>
@@ -82,7 +87,7 @@ const Features = ({ theme }: { theme: Theme}) => {
   );
 };
 
-const HowItWorks = ({ theme }: { theme: Theme}) => {
+const HowItWorks = ({ theme }: { theme: Theme }) => {
   const steps = ['Sign up', 'Connect your tools', 'Automate your workflow'];
 
   return (
@@ -100,27 +105,28 @@ const HowItWorks = ({ theme }: { theme: Theme}) => {
   );
 };
 
-const Testimonials = ({ theme }: { theme: Theme}) => (
+const Testimonials = ({ theme }: { theme: Theme }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-20 px-6 text-center">
     <h2 className="text-3xl font-bold mb-12">What Customers Say</h2>
     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-      <blockquote style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700">
-        <p className="mb-2">“This tool changed our workflow. It’s a must-have.”</p>
-        <footer className="text-sm opacity-70">— Alex from DevCo</footer>
-      </blockquote>
-      <blockquote style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700">
-        <p className="mb-2">“Easy to use and powerful under the hood.”</p>
-        <footer className="text-sm opacity-70">— Jamie from Productive</footer>
-      </blockquote>
+      {[
+        { quote: '“This tool changed our workflow. It’s a must-have.”', author: '— Alex from DevCo' },
+        { quote: '“Easy to use and powerful under the hood.”', author: '— Jamie from Productive' },
+      ].map((testimonial, i) => (
+        <blockquote key={i} className="p-6 rounded-lg shadow border border-gray-200 dark:border-gray-700">
+          <p className="mb-2">{testimonial.quote}</p>
+          <footer className="text-sm opacity-70">{testimonial.author}</footer>
+        </blockquote>
+      ))}
     </div>
   </section>
 );
 
-const Pricing = ({ theme }: { theme: Theme}) => (
+const Pricing = ({ theme }: { theme: Theme }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-20 px-6 text-center">
     <h2 className="text-3xl font-bold mb-12">Simple Pricing</h2>
     <div className="flex flex-col md:flex-row justify-center gap-8">
-      <div style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-8 rounded-lg shadow-md w-full max-w-xs border border-gray-200 dark:border-gray-700">
+      <div className="p-8 rounded-lg shadow-md w-full max-w-xs border border-gray-200 dark:border-gray-700">
         <h3 className="text-xl font-bold mb-4">Free</h3>
         <p className="text-3xl font-bold mb-6">$0/mo</p>
         <ul className="mb-6 text-sm">
@@ -147,23 +153,24 @@ const Pricing = ({ theme }: { theme: Theme}) => (
   </section>
 );
 
-const FAQ = ({ theme }: { theme: Theme}) => (
+const FAQ = ({ theme }: { theme: Theme }) => (
   <section style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-20 px-6">
     <h2 className="text-3xl font-bold text-center mb-12">FAQs</h2>
     <div className="max-w-2xl mx-auto space-y-6">
-      <details style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-4 rounded shadow border border-gray-200 dark:border-gray-700">
-        <summary className="cursor-pointer font-medium">Is there a free trial?</summary>
-        <p className="mt-2">Yes, you can start with our free tier and upgrade anytime.</p>
-      </details>
-      <details style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="p-4 rounded shadow border border-gray-200 dark:border-gray-700">
-        <summary className="cursor-pointer font-medium">Can I cancel anytime?</summary>
-        <p className="mt-2">Absolutely. There are no lock-ins or contracts.</p>
-      </details>
+      {[
+        { q: 'Is there a free trial?', a: 'Yes, you can start with our free tier and upgrade anytime.' },
+        { q: 'Can I cancel anytime?', a: 'Absolutely. There are no lock-ins or contracts.' },
+      ].map((faq, i) => (
+        <details key={i} className="p-4 rounded shadow border border-gray-200 dark:border-gray-700">
+          <summary className="cursor-pointer font-medium">{faq.q}</summary>
+          <p className="mt-2">{faq.a}</p>
+        </details>
+      ))}
     </div>
   </section>
 );
 
-const FooterCTA = ({ theme }: { theme: Theme}) => (
+const FooterCTA = ({ theme }: { theme: Theme }) => (
   <footer style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="py-20 px-6 text-center">
     <h2 className="text-3xl font-bold mb-4">Ready to build faster?</h2>
     <p className="mb-6">Join thousands of teams already building with us.</p>
@@ -172,5 +179,3 @@ const FooterCTA = ({ theme }: { theme: Theme}) => (
     </button>
   </footer>
 );
-
-export default LandingPage;

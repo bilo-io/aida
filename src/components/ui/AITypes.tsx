@@ -70,7 +70,7 @@ interface AITypesProps {
     data: (AIType | string)[];
 }
 
-const getColorForType = (type: string): string => {
+const getColorForType = (type: string | null): string => {
     switch (type) {
         // Creative group
         case 'image-generation':

@@ -1,39 +1,70 @@
-// GET (single), PUT, PATCH, DELETE
+// src/app/api/explore/[...slug]/route.ts
+
 import { db } from '@/lib/firebase'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { NextRequest } from 'next/server'
 
 const collection = db.collection('test')
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const { id } = req.query
-    const docRef = collection.doc(id as string)
+function getIdFromUrl(req: NextRequest): string | null {
+    const url = new URL(req.url)
+    const segments = url.pathname.split('/')
+    return segments[segments.length - 1] || null
+}
+
+export async function GET(req: NextRequest) {
+    const id = getIdFromUrl(req)
+    if (!id) return new Response(JSON.stringify({ error: 'Invalid ID' }), { status: 400 })
 
     try {
-        if (req.method === 'GET') {
-            const doc = await docRef.get()
-            if (!doc.exists) return res.status(404).json({ error: 'Not found' })
-            return res.status(200).json({ id: doc.id, ...doc.data() })
-        }
-
-        if (req.method === 'PUT') {
-            await docRef.set(req.body) // full replace
-            return res.status(200).json({ id })
-        }
-
-        if (req.method === 'PATCH') {
-            await docRef.update(req.body) // partial update
-            return res.status(200).json({ id })
-        }
-
-        if (req.method === 'DELETE') {
-            await docRef.delete()
-            return res.status(204).end()
-        }
-
-        res.setHeader('Allow', ['GET', 'PUT', 'PATCH', 'DELETE'])
-        return res.status(405).end(`Method ${req.method} Not Allowed`)
+        const doc = await collection.doc(id).get()
+        if (!doc.exists) return new Response(JSON.stringify({ error: 'Not found' }), { status: 404 })
+        return new Response(JSON.stringify({ id: doc.id, ...doc.data() }), {
+            status: 200,
+            headers: { 'Content-Type': 'application/json' },
+        })
     } catch (error) {
         console.error(error)
-        return res.status(500).json({ error: 'Internal Server Error' })
+        return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 })
+    }
+}
+
+export async function PUT(req: NextRequest) {
+    const id = getIdFromUrl(req)
+    if (!id) return new Response(JSON.stringify({ error: 'Invalid ID' }), { status: 400 })
+
+    try {
+        const body = await req.json()
+        await collection.doc(id).set(body)
+        return new Response(JSON.stringify({ id }), { status: 200 })
+    } catch (error) {
+        console.error(error)
+        return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 })
+    }
+}
+
+export async function PATCH(req: NextRequest) {
+    const id = getIdFromUrl(req)
+    if (!id) return new Response(JSON.stringify({ error: 'Invalid ID' }), { status: 400 })
+
+    try {
+        const body = await req.json()
+        await collection.doc(id).update(body)
+        return new Response(JSON.stringify({ id }), { status: 200 })
+    } catch (error) {
+        console.error(error)
+        return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 })
+    }
+}
+
+export async function DELETE(req: NextRequest) {
+    const id = getIdFromUrl(req)
+    if (!id) return new Response(JSON.stringify({ error: 'Invalid ID' }), { status: 400 })
+
+    try {
+        await collection.doc(id).delete()
+        return new Response(null, { status: 204 })
+    } catch (error) {
+        console.error(error)
+        return new Response(JSON.stringify({ error: 'Internal Server Error' }), { status: 500 })
     }
 }

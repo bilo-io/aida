@@ -71,9 +71,9 @@ export const OpenGraphCard: React.FC<OpenGraphCardProps> = ({ url, date }) => {
                 className="absolute inset-0 z-10 pointer-events-none"
             >
                 <div
-                    className="h-full w-full transition-opacity duration-300 opacity-50 group-hover:opacity-100"
+                    className="h-full w-full transition-opacity duration-300 opacity-80 group-hover:opacity-100"
                     style={{
-                        background: `linear-gradient(to top, ${theme.BACKGROUND}66 60%, transparent)`,
+                        background: `linear-gradient(to top, ${theme.BACKGROUND}88 60%, transparent)`,
                     }}
                 />
             </div>
@@ -83,14 +83,14 @@ export const OpenGraphCard: React.FC<OpenGraphCardProps> = ({ url, date }) => {
             <div className="absolute bottom-0 left-0 right-0 z-20 p-4 h-24 flex items-end">
                 <div className="relative w-full">
                     {/* Title - visible by default, hidden on hover */}
-                    <h3
+                    <div
                         className="text-xl font-semibold transition-opacity duration-300 group-hover:opacity-0"
                         style={{ color: theme.TEXT }}
                     >
                         {data.title}
                         <br />
-                        {date}
-                    </h3>
+                        <div className='text-sm font-normal'>{date}</div>
+                    </div>
 
                     {/* Description - hidden by default, shown on hover */}
                     {data.description && (

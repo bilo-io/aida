@@ -7,7 +7,7 @@ import { aiTypes, aiTypeOptions } from '../ui/AITypes'
 const schema = z.object({
     search: z.string().min(2, 'Minimum 2 characters').optional(),
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
+    // @ts-expect-error SomeError
     type: z.enum(aiTypes).optional(),
 })
 

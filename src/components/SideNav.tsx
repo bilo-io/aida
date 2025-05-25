@@ -12,11 +12,11 @@ import { GiGraduateCap } from 'react-icons/gi';
 const navItems = [
   { icon: <MdDashboard />, label: 'Dashboard', href: '/dashboard' },
   { icon: <FaSearch />, label: 'Explore', href: '/explore' },
-  { icon: <FaBrain />, label: 'Models', href: '/models' },
+  // { icon: <FaBrain />, label: 'Models', href: '/models' },
   { icon: <FaGlobe />, label: 'News', href: '/news' },
   { icon: <FaPencil />, label: 'Prompts', href: '/prompts' },
-  { icon: <FaWandMagicSparkles />, label: 'Generate', href: '/generate' },
-  { icon: <GiGraduateCap />, label: 'Courses', href: '/courses' },
+  // { icon: <FaWandMagicSparkles />, label: 'Generate', href: '/generate' },
+  // { icon: <GiGraduateCap />, label: 'Courses', href: '/courses' },
   { icon: <FaShield />, label: 'Security', href: '/security' },
   { icon: <MdAccountCircle />, label: 'Account', href: '/account' },
 ];

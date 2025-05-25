@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
+'use client'
 import React from 'react';
 import clsx from 'clsx';
 import { useTheme } from '@/context/ThemeContext';
@@ -79,7 +79,7 @@ export const CollectionLayout = <T,>({
                 ? getSkeletons()
                 : items.map((item, index) => (
                     <div
-                        // @ts-ignore
+                        // @ts-expect-error SomeError
                         key={(item as T).id ?? index}
                         onClick={() => onClick(item)}
                         className="rounded-lg overflow-hidden shadow transition hover:shadow-lg cursor-pointer"

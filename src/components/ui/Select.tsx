@@ -75,14 +75,14 @@ export const Select: React.FC<DropdownProps> = ({
 
             <ReactSelect
                 id={id || label}
-                // @ts-ignore
+                // @ts-expect-error SomeError
                 options={options}
                 value={value}
                 isMulti={isMulti}
                 closeMenuOnSelect={!isMulti}
-                // @ts-ignore
+                // @ts-expect-error SomeError
                 onChange={onChange}
-                // @ts-ignore
+                // @ts-expect-error SomeError
                 styles={customStyles}
                 placeholder={placeholder}
                 {...rest}

@@ -1056,7 +1056,7 @@ export const aiApplications: AIApplicationSummary[] = [
         rating: "8.5/10",
         name: "Bolt.new",
         description: "An AI-driven full-stack development platform by StackBlitz, offering code generation, real-time debugging, and one-click deployment for rapid app development.",
-        image: "/assets/img/ai-apps/ai-boltnew.jpg",
+        image: "/assets/img/ai-apps/ai-boltnew.png",
         logo: "https://bolt.new/images/logo.svg",
         companyName: "StackBlitz",
         companyLink: "https://stackblitz.com",
