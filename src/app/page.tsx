@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '@/context/ThemeContext';
 import { Theme } from '@/styles/themes';
+import { Landing } from '@/components/Pages/Landing/Landing';
 
 const Page = () => {
   const { theme } = useTheme();
@@ -14,17 +15,7 @@ const Page = () => {
   }, []);
 
   return (
-    <div style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT }} className="w-full overflow-x-hidden">
-      <Hero theme={theme} imgPath={imgPath} />
-      <SocialProof theme={theme} imgPath={imgPath} />
-      <ProblemSolution theme={theme} imgPath={imgPath} />
-      <Features theme={theme} />
-      <HowItWorks theme={theme} />
-      <Testimonials theme={theme} />
-      <Pricing theme={theme} />
-      <FAQ theme={theme} />
-      <FooterCTA theme={theme} />
-    </div>
+    <Landing />
   );
 };
 

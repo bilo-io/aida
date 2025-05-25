@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { FaSearch } from 'react-icons/fa';
 import { FaBrain, FaGlobe, FaPencil, FaShield } from 'react-icons/fa6';
 import { MdAccountCircle, MdDashboard } from 'react-icons/md';
+import { AppGradientIcon, AppLogo } from './ui/AppIcon';
 
 const navItems = [
   { icon: <MdDashboard />, label: 'Dashboard', href: '/dashboard' },
@@ -27,8 +28,9 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
 
   const SideNavTitle = (
     <div className="flex flex-row items-center">
-      <FaBrain color={theme.PRIMARY} size={24} />
-      {expanded ? <span className="text-lg mx-2" style={{ color: theme.PRIMARY }}>AIDA</span> : null}
+      {/* <FaBrain color={theme.PRIMARY} size={24} /> */}
+      <AppGradientIcon size={24} />
+      {expanded ? <AppLogo size={18} /> : null}
     </div>
   );
 
@@ -55,11 +57,11 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
               key={item.href}
               href={item.href}
               className={clsx(
-                'flex items-center gap-3 px-4 py-2 rounded transition-colors duration-200 hover:bg-[#00aedd]',
+                'flex items-center gap-3 px-4 py-2 rounded transition-colors duration-200 hover:bg-[#0067FF]',
                   isActive && 'font-semibold  hover:text-[#FFF] hover:[&>svg]:text-white hover:bg-[#FFF]',
                 isActive
-                    ? 'text-[--primary] [&>svg]:text-[--primary]  hover:text-[#FFF] hover:[&>svg]:text-white hover:bg-[#00aedd]'
-                    : `text-inherit hover:text-[#FFF] hover:[&>svg]:text-white hover:bg-[#00aedd]`
+                  ? 'text-[--primary] [&>svg]:text-[--primary]  hover:text-[#FFF] hover:[&>svg]:text-white hover:bg-[#0067FF]'
+                  : `text-inherit hover:text-[#FFF] hover:[&>svg]:text-white hover:bg-[#0067FF]`
               )}
               style={
                 isActive

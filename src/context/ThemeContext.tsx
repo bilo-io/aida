@@ -5,6 +5,7 @@ import { LIGHT_THEME, DARK_THEME, Theme } from '@/styles/themes';
 
 type ThemeContextType = {
     theme: Theme;
+    name: string;
     isDark: boolean;
     toggleTheme: () => void;
 };
@@ -16,9 +17,10 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const toggleTheme = () => setIsDark((prev) => !prev);
 
     const theme = isDark ? DARK_THEME : LIGHT_THEME;
+    const name = theme.name;
 
     return (
-        <ThemeContext.Provider value={{ theme, isDark, toggleTheme }}>
+        <ThemeContext.Provider value={{ theme, name, isDark, toggleTheme }}>
             <div style={{ backgroundColor: theme.BACKGROUND, color: theme.TEXT, minHeight: '100vh' }}>
                 {children}
             </div>
