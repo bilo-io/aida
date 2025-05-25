@@ -6,6 +6,8 @@ import React, { useEffect, useState } from 'react';
 import { ISection, sections } from '../Landing.utils';
 import { useTheme } from '@/context/ThemeContext';
 
+const imgPlaceholder = `${window.location.origin}/assets/img/img-placeholder-500x500.png`
+
 const videoDark = 'https://static.vecteezy.com/system/resources/previews/006/995/865/mp4/dark-liquid-beautiful-motion-flow-animation-black-wavy-moving-background-free-video.mp4';
 const videoLight = 'https://static.vecteezy.com/system/resources/previews/041/715/954/mp4/ai-generated-white-milk-calm-waves-in-motion-free-video.mp4';
 
@@ -13,7 +15,7 @@ export const LandingHeader: React.FC = () => {
   const { name: themeName, theme } = useTheme();
 
 
-  const landingSections: ISection[] = sections(themeName, theme);
+  const landingSections: ISection[] = sections(themeName, theme, imgPlaceholder);
   const section = landingSections?.find((s: ISection) => s.type === 'header') as ISection;
 
   // #region STYLES

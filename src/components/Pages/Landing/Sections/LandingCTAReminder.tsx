@@ -7,10 +7,12 @@ import Section from '@/components/Pages/Landing/Sections/Section';
 import { ISection, sections } from '../Landing.utils';
 import { useTheme } from '@/context/ThemeContext';
 
+const imgPlaceholder = `${window.location.origin}/assets/img/img-placeholder-500x500.png`
+
 export const LandingCTAReminder: React.FC = () => {
   const { name: themeName, theme } = useTheme();
 
-  const landingSections: ISection[] = sections(themeName, theme );
+  const landingSections: ISection[] = sections(themeName, theme, imgPlaceholder);
   const section = landingSections?.find((s: ISection) => s.type === 'cta-reminder') as ISection;
 
   return (

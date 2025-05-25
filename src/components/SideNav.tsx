@@ -29,7 +29,7 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
   const SideNavTitle = (
     <div className="flex flex-row items-center">
       {/* <FaBrain color={theme.PRIMARY} size={24} /> */}
-      <AppGradientIcon size={24} />
+      <AppGradientIcon size={18} /><span className="mr-2" />
       {expanded ? <AppLogo size={18} /> : null}
     </div>
   );
@@ -38,7 +38,7 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
     <aside
       className={clsx(
         'top-0 left-0 h-full z-40 transition-all duration-300',
-        mobile ? 'w-48' : expanded ? 'w-48' : 'w-12',
+        mobile ? 'w-48' : expanded ? 'w-48' : 'w-16',
         'overflow-hidden'
       )}
       style={{ backgroundColor: theme.SIDENAV_BG, color: theme.SIDENAV_TEXT }}
@@ -73,7 +73,7 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
               }
             >
               {React.cloneElement(item.icon, {
-                className: clsx('text-lg transition-colors'),
+                className: clsx('text-2xl mx-1.5 transition-colors'),
                 ...(isActive ? { color: theme.PRIMARY } : {}),
               })}
               {(!mobile && expanded) || mobile ? <span>{item.label}</span> : null}
@@ -84,7 +84,7 @@ export const SideNav = ({ mobile, toggleMobile }: { mobile?: boolean; toggleMobi
         <hr className="my-2 opacity-10" />
 
         <button onClick={() => setExpanded(!expanded)} className="hidden md:flex items-center ml-4 mb-2">
-          <span className="mr-3">{expanded ? <FiChevronLeft /> : <FiChevronRight />}</span>
+          <span className="mr-3 ml-2">{expanded ? <FiChevronLeft className='text-xl' /> : <FiChevronRight className='text-xl' />}</span>
           {expanded ? <span>Collapse</span> : null}
         </button>
       </nav>

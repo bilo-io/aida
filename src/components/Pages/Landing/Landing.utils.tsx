@@ -11,7 +11,7 @@
 // import imgDashboardLight from 'assets/img/landing/Vision-Dashboard-Light.png';
 // import imgProjectsDark from 'assets/img/landing/Vision-Projects-Dark.png';
 // import imgProjectsLight from 'assets/img/landing/Vision-Projects-Light.png';
-const imgPlaceholder = `${window.location.origin}/assets/img/img-placeholder-500x500.png`
+// 
 import { View } from '@/components/ui/View'
 // import { CompanyIcon, FlagIcon, Icon, View } from 'components/Core';
 // import ThemePalette from 'components/Core/ThemeButton/ThemePalette';
@@ -47,7 +47,8 @@ export const sections = (
   theme: Theme,
   // navigate: Function,
   // language: SupportedLanguages,
-  images?: string[],
+  // images?: string[],
+  imgPlaceholder?: string,
   // t?: ITranslation,
 ): ISection[] => [
   {
