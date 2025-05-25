@@ -1,7 +1,6 @@
 'use client'
 import { useTheme } from '@/context/ThemeContext';
 import React from 'react';
-import Image from 'next/image'
 import { Theme } from '@/styles/themes';
 
 const imgPath = `${window.location.origin}/assets/img`

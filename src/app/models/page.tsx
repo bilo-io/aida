@@ -35,7 +35,7 @@ export default function Explore() {
         type: null
     })
 
-    const { retry: fetchData, loading, error } = useFetch<AIApplicationSummary[]>(`/api/explore?${toQueryString(query)}`, {
+    const { loading } = useFetch<AIApplicationSummary[]>(`/api/explore?${toQueryString(query)}`, {
         auto: true,
         method: 'GET',
         onSuccess: (data: AIApplicationSummary[]) => {

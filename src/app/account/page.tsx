@@ -26,7 +26,7 @@ export default function Account() {
                                         role: "admin" | "user" | "guest";
                                         bio?: string | undefined;
                                     }): void {
-                                    throw new Error("Function not implemented.");
+                                    console.log('onSubmit', data)
                                 } } />
                             </div>
                         )

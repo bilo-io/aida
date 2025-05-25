@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 import { Modal } from '@/components/ui/Modal';
 import { Button } from '@/components/ui/Button';
 import { AIApplicationSummary } from '@/types/ai-apps';
-import { DropdownValue } from '../Select';
 import { FaExpand, FaLink } from 'react-icons/fa6';
 import AITypes from '../AITypes';
 import { useTheme } from '@/context/ThemeContext';

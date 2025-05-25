@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import { aiApplications as items } from '@/data/ai-apps'
-import { AIApplicationSummary  } from '@/types/ai-apps'
+// import { AIApplicationSummary  } from '@/types/ai-apps'
 
 // Helper to find item index
 const findIndex = (id: string) => items.findIndex(item => item.id === id)
@@ -65,7 +65,8 @@ export async function PUT(req: Request) {
         items[index].name = body.name
         return NextResponse.json(items[index])
     } catch (err) {
-        return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+        // @ts-ignore
+        return NextResponse.json({ error: `Invalid JSON: ${err?.message}` }, { status: 400 })
     }
 }
 
@@ -84,6 +85,7 @@ export async function DELETE(req: Request) {
         const deleted = items.splice(index, 1)[0]
         return NextResponse.json(deleted)
     } catch (err) {
-        return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 })
+        // @ts-ignore
+        return NextResponse.json({ error: `Invalid JSON: ${err?.message}` }, { status: 400 })
     }
 }

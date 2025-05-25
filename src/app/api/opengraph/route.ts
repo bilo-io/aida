@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
         }
     } catch (error) {
         return new Response(
-            JSON.stringify({ error: 'Internal error fetching OpenGraph data' }),
+            JSON.stringify({ error: `Internal error fetching OpenGraph data:\n${error}` }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
         );
     }

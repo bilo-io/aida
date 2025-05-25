@@ -2,7 +2,7 @@ import React from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import clsx from 'clsx'
 import { useTheme } from '@/context/ThemeContext'
-import Select from './Select'
+// import Select from './Select'
 
 interface FormFieldProps {
     name: string
@@ -70,7 +70,7 @@ export function FormField({
                                     {placeholder}
                                 </option>
                                 {options?.map((opt) => (
-                                    <option key={opt.value} value={opt.value}>
+                                    <option key={opt.value} value={opt.value as string}>
                                         {opt.label}
                                     </option>
                                 ))}
