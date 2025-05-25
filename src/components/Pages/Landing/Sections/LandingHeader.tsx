@@ -1,3 +1,4 @@
+'use client'
 import { Button, Typography, View } from '@/components/ui';
 // import TypingAnimation from 'components/Core/TypingAnimation/TypingAnimation';
 import Section from '@/components/Pages/Landing/Sections/Section';

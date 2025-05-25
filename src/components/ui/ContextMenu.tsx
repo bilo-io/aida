@@ -1,3 +1,4 @@
+'use client'
 import { useTheme } from '@/context/ThemeContext';
 import { useHover } from '@/hooks/useHover';
 import React, { useRef, useState, useEffect } from 'react';

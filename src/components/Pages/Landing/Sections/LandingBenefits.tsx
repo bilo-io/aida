@@ -1,3 +1,4 @@
+'use client'
 import { Typography } from '@/components/ui/Typography';
 import { View } from '@/components/ui/View';
 import Section from '@/components/Pages/Landing/Sections/Section';
