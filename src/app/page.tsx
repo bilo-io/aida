@@ -6,13 +6,13 @@ import { Landing } from '@/components/Pages/Landing/Landing';
 
 const Page = () => {
   const { theme } = useTheme();
-  const [imgPath, setImgPath] = useState('');
+  // const [imgPath, setImgPath] = useState('');
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setImgPath(`${window.location.origin}/assets/img`);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     setImgPath(`${window.location.origin}/assets/img`);
+  //   }
+  // }, []);
 
   return (
     <Landing />
