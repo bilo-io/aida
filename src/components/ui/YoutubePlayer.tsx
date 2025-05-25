@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 interface YouTubePlayerProps {
     url: string;
     className?: string;
+    date?: string;
 }
 
 function parseYouTubeParams(url: string): { videoId?: string; playlistId?: string } {

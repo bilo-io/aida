@@ -26,8 +26,8 @@ export default function Account() {
                                         role: "admin" | "user" | "guest";
                                         bio?: string | undefined;
                                     }): void {
-                                    console.log('onSubmit', data)
-                                } } />
+                                        console.log('onSubmit', data)
+                                    }} />
                             </div>
                         )
                     },
@@ -41,7 +41,7 @@ export default function Account() {
                                 onClick={(item) => {
                                     // Handle click, e.g., navigate or show details
                                     console.log("Clicked:", item);
-                                } }
+                                }}
                                 renderGridItem={(item) => (
                                     <div className="card" key={item.id}>
                                         <Image width={640} src={item.image} alt={item.name} className="w-full h-48 object-cover rounded" />
@@ -51,9 +51,18 @@ export default function Account() {
                                             <p className="text-xs text-gray-400 mt-1">{item.rating}</p>
                                         </div>
                                     </div>
-                                )} renderListItem={function (item: AIApplicationSummary): React.ReactElement {
-                                    throw new Error("Function not implemented.");
-                                } }                            />
+                                )}
+                                renderListItem={(item: AIApplicationSummary) => (
+                                    <div className="card" key={item.id}>
+                                        <Image width={640} src={item.image} alt={item.name} className="w-full h-48 object-cover rounded" />
+                                        <div className="p-2">
+                                            <h3 className="text-lg font-semibold">{item.name}</h3>
+                                            <p className="text-sm text-gray-600">{item.description}</p>
+                                            <p className="text-xs text-gray-400 mt-1">{item.rating}</p>
+                                        </div>
+                                    </div>
+                                )}
+                            />
                         )
                     },
                     {

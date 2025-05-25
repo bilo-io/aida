@@ -65,7 +65,7 @@ export async function PUT(req: Request) {
         items[index].name = body.name
         return NextResponse.json(items[index])
     } catch (err) {
-        // @ts-ignore
+        // @ts-expect-error Some error
         return NextResponse.json({ error: `Invalid JSON: ${err?.message}` }, { status: 400 })
     }
 }
@@ -85,7 +85,7 @@ export async function DELETE(req: Request) {
         const deleted = items.splice(index, 1)[0]
         return NextResponse.json(deleted)
     } catch (err) {
-        // @ts-ignore
+        // @ts-expect-error Some error
         return NextResponse.json({ error: `Invalid JSON: ${err?.message}` }, { status: 400 })
     }
 }

@@ -23,6 +23,7 @@ export async function GET(req: NextRequest) {
                     description: result.ogDescription,
                     image: Array.isArray(result.ogImage)
                         ? result.ogImage[0]?.url
+                        // @ts-expect-error some error
                         : result.ogImage?.url || null,
                     url: result.requestUrl,
                 }),

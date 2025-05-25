@@ -57,11 +57,11 @@ export default function Images() {
                     <div className="card" key={item.id}>
                         {item.type === 'youtube' ? (
                             <>
-                                <YouTubePlayer url={item.url as string} />
+                                <YouTubePlayer url={item.url as string} date={item.createdAt} />
                             </>
                         ) : null}
                         {item.type === 'article' ? (
-                            <OpenGraphCard url={item?.url as string} />
+                            <OpenGraphCard url={item?.url as string} date={item.createdAt} />
                         ) : null}
                     </div>
                 )}
@@ -70,7 +70,7 @@ export default function Images() {
                         <div className="card" key={item.id}>
                             {item.type === 'youtube' ? (
                                 <>
-                                    <YouTubePlayer url={item.url as string} />
+                                    <YouTubePlayer url={item.url as string} date={item.createdAt} />
                                 </>
                             ) : null}
                             {item.type === 'article' ? (

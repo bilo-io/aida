@@ -74,7 +74,7 @@ export default function Explore() {
                     console.log("Clicked:", item);
                 }}
                 renderGridItem={(item) => (
-                    <div className="card" key={item.id} onClick={() => handleOpenModal(item)}>
+                    <div className="card" key={item.id}>
                         <img src={`${window.location.origin}${item.image}`} alt={item.name} className="w-full h-48 object-cover rounded" />
                         <div className="p-2">
                             <div className='flex flex-row items-center justify-between'>
@@ -95,7 +95,7 @@ export default function Explore() {
                 )}
                 renderListItem={
                     (item) => (
-                        <div className="card flex flex-row" key={item.id} onClick={() => handleOpenModal(item)}>
+                        <div className="card flex flex-row" key={item.id}>
                             <img src={`${window.location.origin}${item.image}`} alt={item.name} className="w-[16rem] md:w-[16rem] h-40 object-cover rounded" />
                             <div className="w-3/4 p-4 pl-8">
                                 <div className='flex flex-row items-center justify-between'>
