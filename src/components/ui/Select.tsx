@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useTheme } from '@/context/ThemeContext';
 import React from 'react';
 import ReactSelect, { ActionMeta, StylesConfig } from 'react-select';
