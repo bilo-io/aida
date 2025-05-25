@@ -5,7 +5,8 @@
   "description": "",
   "main": "index.js",
   "workspaces": [
-    "src/*"
+    "src/webapp",
+    "src/packages"
   ],
   "scripts": {
     "dev:all": "concurrently \"pnpm -r --filter ./... dev\"",
