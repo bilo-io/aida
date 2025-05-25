@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /**
  * Converts an object into a query string.
  * @param params - The object to be converted into query string.
