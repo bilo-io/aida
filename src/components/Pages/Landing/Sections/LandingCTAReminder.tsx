@@ -7,7 +7,7 @@ import Section from '@/components/Pages/Landing/Sections/Section';
 import { ISection, sections } from '../Landing.utils';
 import { useTheme } from '@/context/ThemeContext';
 
-const imgPlaceholder = `${window.location.origin}/assets/img/img-placeholder-500x500.png`
+const imgPlaceholder = `https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg`
 
 export const LandingCTAReminder: React.FC = () => {
   const { name: themeName, theme } = useTheme();

@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { ISection, sections } from '../Landing.utils';
 import { useTheme } from '@/context/ThemeContext';
 
-const imgPlaceholder = `${window.location.origin}/assets/img/img-placeholder-500x500.png`
+const imgPlaceholder = `https://www.kurin.com/wp-content/uploads/placeholder-square-300x300.jpg`
 
 const videoDark = 'https://static.vecteezy.com/system/resources/previews/006/995/865/mp4/dark-liquid-beautiful-motion-flow-animation-black-wavy-moving-background-free-video.mp4';
 const videoLight = 'https://static.vecteezy.com/system/resources/previews/041/715/954/mp4/ai-generated-white-milk-calm-waves-in-motion-free-video.mp4';
