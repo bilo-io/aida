@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable array-callback-return */
 import { AppTopBarPublic } from '@/components/AppTopBarPublic';
 // import { Footer } from 'components/App/Footer/Footer';
