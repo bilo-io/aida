@@ -25,11 +25,11 @@ export const Landing: React.FC = () => {
 
       <AppTopBarPublic />
 
-      <LandingHeader />
-      <LandingBenefits />
+      {/* <LandingHeader /> */}
+      {/* <LandingBenefits /> */}
       {/* <LandingMarquee /> */}
       {/* <LandingFeatures /> */}
-      <LandingCTAReminder />
+      {/* <LandingCTAReminder /> */}
       {/* <LandingTestimonials /> */}
       {/* <LandingFAQs /> */}
       {/* <LandingEarlyAccess /> */}
