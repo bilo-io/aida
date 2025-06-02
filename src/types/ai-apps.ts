@@ -13,4 +13,11 @@ export interface AIApplicationSummary {
     types: string[]; // e.g. ['writing', 'coding', 'chatbot']
     pros: string[];
     cons: string[];
+    subscriptions?: {
+        name: string,
+        usdMonthly: number | string,
+        usdYearly: number | string,
+        description?: string;
+        pricingDetails?: { [key in string]?: string | number | any }
+    }[],
 }

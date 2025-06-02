@@ -5,9 +5,10 @@ import { usePathname } from 'next/navigation';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import clsx from 'clsx';
 import { FaSearch } from 'react-icons/fa';
-import { FaBrain, FaGlobe, FaPencil, FaShield } from 'react-icons/fa6';
+import { FaGlobe, FaPencil, FaShield } from 'react-icons/fa6';
 import { MdAccountCircle, MdDashboard } from 'react-icons/md';
 import { AppGradientIcon, AppLogo } from './ui/AppIcon';
+import { BsRocketTakeoff } from 'react-icons/bs';
 
 const navItems = [
   { icon: <MdDashboard />, label: 'Dashboard', href: '/dashboard' },
@@ -17,7 +18,7 @@ const navItems = [
   { icon: <FaPencil />, label: 'Prompts', href: '/prompts' },
   // { icon: <FaWandMagicSparkles />, label: 'Generate', href: '/generate' },
   // { icon: <GiGraduateCap />, label: 'Courses', href: '/courses' },
-  { icon: <FaShield />, label: 'Security', href: '/security' },
+  { icon: <BsRocketTakeoff />, label: 'Startup', href: '/startup' },
   { icon: <MdAccountCircle />, label: 'Account', href: '/account' },
 ];
 

@@ -42,7 +42,9 @@ export const Layout = ({ children, title, useBreadcrumbs }: LayoutProps) => {
 
         {/* Page content */}
         <main className="flex-1 overflow-y-auto p-4">
-          {children}
+          <div className="max-w-[64rem] mx-auto">
+            {children}
+          </div>
         </main>
       </div>
     </div>

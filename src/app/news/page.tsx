@@ -9,6 +9,7 @@ import { OpenGraphCard } from '@/components/ui/OpenGraphCard';
 import { useLocalStorageState } from "@/hooks/useLocalStorageState";
 import { useState } from "react";
 import { aiNewsItems } from "@/data/ai-news";
+import { Tabs } from "@/components/ui";
 
 export interface AINews {
     id?: string | number;
@@ -40,44 +41,65 @@ export default function Images() {
                     />
                 </div>
             </div>
+
             {/* 
             <Collapsible isOpen={isFiltersOpen} className='p-2'>
                 <FormSearchApps onSubmit={(formData: any) => setQuery(formData)} />
-            </Collapsible> */}
-
-            <CollectionLayout<AINews>
-                items={aiNewsItems} // Use the imported array
-                // import { useTheme } from '@/context/ThemeContext';
-                view={view}
-                onClick={(item) => {
-                    // Handle click, e.g., navigate or show details
-                    console.log("Clicked:", item);
-                }}
-                renderGridItem={(item) => (
-                    <div className="card" key={item.id}>
-                        {item.type === 'youtube' ? (
-                            <>
-                                <YouTubePlayer url={item.url as string} date={item.createdAt} />
-                            </>
-                        ) : null}
-                        {item.type === 'article' ? (
-                            <OpenGraphCard url={item?.url as string} date={item.createdAt} />
-                        ) : null}
-                    </div>
-                )}
-                renderListItem={
-                    (item) => (
-                        <div className="card" key={item.id}>
-                            {item.type === 'youtube' ? (
-                                <>
-                                    <YouTubePlayer url={item.url as string} date={item.createdAt} />
-                                </>
-                            ) : null}
-                            {item.type === 'article' ? (
-                                <OpenGraphCard url={item?.url as string} date={item.createdAt} />
-                            ) : null}
-                        </div>
-                    )}
+            </Collapsible> 
+            */}
+            
+            <Tabs
+                useUrl
+                tabs={[
+                    {
+                        label: 'YouTube',
+                        value: 'youtube',
+                        view: (
+                            <CollectionLayout<AINews>
+                                items={aiNewsItems.filter((item: AINews) => item.type === 'youtube')} // Use the imported array
+                                view={view}
+                                onClick={(item) => {
+                                    console.log("Clicked:", item);
+                                }}
+                                renderGridItem={(item) => (
+                                    <div className="card" key={item.id}>
+                                        <YouTubePlayer url={item.url as string} date={item.createdAt} />
+                                    </div>
+                                )}
+                                renderListItem={
+                                    (item) => (
+                                        <div className="card" key={item.id}>
+                                            <YouTubePlayer url={item.url as string} date={item.createdAt} />
+                                        </div>
+                                    )}
+                            />
+                        )
+                    },
+                    {
+                        label: 'Articles',
+                        value: 'articles',
+                        view: (
+                            <CollectionLayout<AINews>
+                                items={aiNewsItems.filter((item: AINews) => item.type === 'article')} // Use the imported array
+                                view={view}
+                                onClick={(item) => {
+                                    console.log("Clicked:", item);
+                                }}
+                                renderGridItem={(item) => (
+                                    <div className="card" key={item.id}>
+                                        <OpenGraphCard url={item?.url as string} date={item.createdAt} />
+                                    </div>
+                                )}
+                                renderListItem={
+                                    (item) => (
+                                        <div className="card" key={item.id}>
+                                            <OpenGraphCard url={item?.url as string} date={item.createdAt} />
+                                        </div>
+                                    )}
+                            />
+                        )
+                    },
+                ]}
             />
         </Layout>
     );

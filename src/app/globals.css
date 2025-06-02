@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import 'highlight.js/styles/atom-one-dark.css';
 
 :root {
   --background: #ffffff;
@@ -23,4 +24,55 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Basic Markdown content styling (if not using @tailwindcss/typography) */
+.markdown-content h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 1em;
+  margin-top: 1.5em; /* Add top margin for headings */
+}
+
+.markdown-content h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.8em;
+  margin-top: 1.2em;
+}
+
+.markdown-content p {
+  margin-bottom: 1em;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  list-style-position: inside; /* Keeps bullets/numbers inside padding */
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5em;
+}
+
+.markdown-content a {
+  color: #3b82f6; /* A common blue color */
+  text-decoration: underline;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #d1d5db; /* A light gray border */
+  padding-left: 1em;
+  color: #6b7280; /* A darker gray text */
+  margin-bottom: 1em;
+}
+
+/* Inline code styling, if MarkdownRenderer's renderer doesn't handle it for you */
+.markdown-content code:not(pre code) {
+  background-color: #e5e7eb; /* light gray background */
+  color: #b91c1c; /* dark red text */
+  padding: 0.2em 0.4em;
+  border-radius: 0.3em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }

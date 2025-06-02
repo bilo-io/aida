@@ -49,7 +49,7 @@ export const OpenGraphCard: React.FC<OpenGraphCardProps> = ({ url, date }) => {
             href={data.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative rounded-lg overflow-hidden group transition-transform transform hover:scale-[1.01] block shadow-md min-h-52"
+            className="relative rounded-lg overflow-hidden group transition-transform transform hover:scale-[1.01] block shadow-md min-h-96"
             style={{
                 backgroundColor: theme.BACKGROUND,
                 color: theme.TEXT,
